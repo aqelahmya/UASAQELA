@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <title>Website Saya - Informasi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Selamat Datang di Website Saya</h1>
+        <p>Halaman Informasi</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="karya.html">Karya & Project</a></li>
+            <li><a href="media.html">Media</a></li>
+            <li><a href="informasi.html" class="active">Informasi</a></li>
+            <li><a href="kontak.html">Kontak</a></li>
+        </ul>
+    </nav>
+   <div class="main-content">
+    <h2>Pusat Informasi & Bantuan</h2>
+    <p>Klik pada pertanyaan di bawah ini untuk mendapatkan bantuan cepat mengenai website ini.</p>
+
+    <div class="faq-container">
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                <span>Bagaimana cara melihat karya saya?</span>
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+                <p>Anda dapat mengklik menu <strong>Karya & Project</strong> pada navigasi di atas untuk melihat kumpulan proyek pemrograman yang telah saya buat.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                <span>Mengapa video di halaman Media tidak berputar?</span>
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+                <p>Pastikan koneksi internet Anda stabil atau file video berada di folder yang sama dengan file HTML. Gunakan browser modern seperti Chrome atau Edge untuk hasil terbaik.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                <span>Siapa pengembang website ini?</span>
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+                <p>Website ini dikembangkan oleh <strong>AQELA HAMNE APRIANI</strong> sebagai tugas UAS mata kuliah Pemrograman Web 1-2025.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleFAQ(element) {
+        // Menutup bantuan lain yang sedang terbuka
+        const allAnswers = document.querySelectorAll('.faq-answer');
+        allAnswers.forEach(answer => {
+            if (answer !== element.nextElementSibling) {
+                answer.style.display = "none";
+            }
+        });
+
+        // Membuka atau menutup bantuan yang diklik
+        const answer = element.nextElementSibling;
+        if (answer.style.display === "block") {
+            answer.style.display = "none";
+        } else {
+            answer.style.display = "block";
+        }
+    }
+</script>

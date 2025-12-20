@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <title>Karya & Project - Website Saya</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>Selamat Datang di Website Saya</h1>
+        <p>Halaman Koleksi Tugas & Proyek</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="karya.html" class="active">Karya & Project</a></li>
+            <li><a href="media.html">Media</a></li>
+            <li><a href="informasi.html">Informasi</a></li>
+            <li><a href="kontak.html">Kontak</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-content">
+        <h2>Portfolio Saya</h2>
+        <p>Klik menu di bawah untuk melihat kategori yang berbeda.</p>
+
+        <div class="media-tabs">
+            <button class="tab-link active" onclick="openKategori(event, 'karya')">
+                <i class="fas fa-paint-brush"></i>  Karya
+            </button>
+            <button class="tab-link" onclick="openKategori(event, 'project')">
+                <i class="fas fa-code"></i> Project
+            </button>
+        </div>
+        
+        <div id="karya" class="tab-content active">
+            <div class="karya-grid">
+                <div class="karya-item">
+                    <img src="Karya gaun 2.jpg"Karya 1" onclick="openModal(this.src)">
+                    <p>Membuat Gaun Sebagai Tugas Akhir saat SMK</p>
+                </div>
+                <div class="karya-item">
+                    <img src="Karya Kebaya.jpg"Karya 2" onclick="openModal(this.src)">
+                    <p>Membuat Kebaya Sebagai Tugas PKL .</p>
+                </div>
+                <div class="karya-item">
+                    <img src="Karya Design.jpg"Karya 3" onclick="openModal(this.src)">
+                    <p>Membuat Design untuk menciptakan Karya Fashion Busana. </p>
+                </div>
+            </div>
+        </div>
+
+        <div id="project" class="tab-content">
+            <div class="karya-grid">
+                <div class="karya-item">
+                    <img src="total belanja ss.png" alt="Proyek 1" onclick="openModal(this.src)">
+                    <p>Membuat Perhitungan Total Belanja</p>
+                </div>
+                <div class="karya-item">
+                    <img src="karyawan ss.jpg"Proyek 2" onclick="openModal(this.src)">
+                    <p>Membuat Form Penerimaan Karyawan baru Menggunkan HTML .</p>
+                </div>
+                <div class="karya-item">
+                    <img src="Cuplikan layar 2025-12-18 172849.png" alt="Proyek 3" onclick="openModal(this.src)">
+                    <p>Website Layout Modern & Responsif</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="myModal" class="modal" onclick="closeModal()">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="imgFull">
+    </div>
+
+    <footer>&copy; 2025 WEBSITE-AQELA HAMNE APRIANI</footer>
+
+    <script>
+        function openKategori(evt, kategoriName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+                tabcontent[i].classList.remove("active");
+            }
+            tablinks = document.getElementsByClassName("tab-link");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(kategoriName).style.display = "block";
+            document.getElementById(kategoriName).classList.add("active");
+            evt.currentTarget.className += " active";
+        }
+
+        function openModal(src) {
+            document.getElementById("myModal").style.display = "block";
+            document.getElementById("imgFull").src = src;
+        }
+
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+        }
+    </script>
+</body>
+</html>

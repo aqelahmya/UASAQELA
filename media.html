@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <title>Media - Website Saya</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>Selamat Datang di Website Saya</h1>
+        <p>Halaman Media</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="karya.html">Karya & Project</a></li>
+            <li><a href="media.html" class="active">Media</a></li>
+            <li><a href="informasi.html">Informasi</a></li>
+            <li><a href="kontak.html">Kontak</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-content">
+        <h2>Koleksi Media</h2>
+        <p>Klik media di bawah ini untuk melihat atau memutarnya.</p>
+
+        <div class="media-tabs">
+            <button class="tab-link active" onclick="openMedia(event, 'foto')"><i class="fas fa-image"></i> Foto</button>
+            <button class="tab-link" onclick="openMedia(event, 'video')"><i class="fas fa-video"></i> Video</button>
+            <button class="tab-link" onclick="openMedia(event, 'audio')"><i class="fas fa-music"></i> Audio</button>
+        </div>
+
+        <div id="foto" class="tab-content active">
+            <div class="media-grid">
+                <img src= "1.png" Foto 1" onclick="openImage(this.src)">
+                <img src= "2.png" Foto 2" onclick="openImage(this.src)">
+                <img src="3.png" Foto 3" onclick="openImage(this.src)">
+            </div>
+        </div>
+
+        <div id="video" class="tab-content">
+            <div class="media-grid">
+                <div class="video-container">
+                    <video controls>
+                        <source src="Belajar1.Mp4.mp4" video/mp4">
+                        
+                    </video>
+                    <p>Belajar bagian 1</p>
+                </div>
+                <div class="video-container">
+                    <video controls>
+                        <source src= "videoplayback.mp4" video/mp4">
+                        
+                    </video>
+                    <p>Belajar bagian 2</p>
+                </div>
+                <div class="video-container">
+                    <video controls>
+                        <source src="Belajar3.mp4.mp4" video/mp4">
+                        
+                    </video>
+                    <p>Belajar bagian 3</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="audio" class="tab-content">
+            <div class="audio-list">
+                <div class="audio-item">
+                    <p><i class="fas fa-play-circle"></i> Belajar 1</p>
+                    <audio controls>
+                        <source src="1 Pengantar Pemrograman Web Dasar _ PEMROGRAMAN WEB DASAR.mp3" type="audio/ogg">
+                    </audio>
+                </div>
+                <div class="audio-item">
+                    <p><i class="fas fa-play-circle"></i> Belajar 2</p>
+                    <audio controls>
+                        <source src="2 Mengenal Web dan Teknologi nya _ PEMROGRAMAN WEB DASAR.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="audio-item">
+                    <p><i class="fas fa-play-circle"></i> Belajar 3</p>
+                    <audio controls>
+                        <source src="3 Persiapan Tools _ PEMROGRAMAN WEB DASAR.mp3"audio/mpeg">
+                    </audio>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="imgModal" class="modal" onclick="this.style.display='none'">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="imgFull">
+    </div>
+
+    <footer>&copy; 2025 WEBSITE-AQELA HAMNE APRIANI</footer>
+
+    <script>
+        // Fungsi Tab
+        function openMedia(evt, mediaName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tab-link");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(mediaName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // Fungsi Buka Foto Besar
+        function openImage(src) {
+            document.getElementById("imgModal").style.display = "block";
+            document.getElementById("imgFull").src = src;
+        }
+    </script>
+</body>
+</html>
+
