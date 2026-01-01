@@ -1,14 +1,60 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Website Saya - Informasi</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* CSS Khusus Halaman Informasi */
+        .section-container {
+            max-width: 900px;
+            margin: 0 auto 50px auto;
+            padding: 20px;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .video-card {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .video-card iframe {
+            width: 100%;
+            aspect-ratio: 16/9;
+            border: none;
+        }
+
+        .video-label {
+            padding: 12px;
+            text-align: center;
+            font-weight: bold;
+            background: #f9f9f9;
+            border-top: 1px solid #eee;
+        }
+
+        /* FAQ Styling agar konsisten */
+        .faq-container { margin-top: 20px; }
+        .faq-item { border: 1px solid #ddd; border-radius: 8px; margin-bottom: 10px; overflow: hidden; background: #fff; }
+    </style>
 </head>
 <body>
+
     <header>
         <h1>Selamat Datang di Website Saya</h1>
-        <p>Halaman Informasi</p>
+        <p>Halaman Informasi & Tutorial</p>
     </header>
+
     <nav>
         <ul>
             <li><a href="index.html">Home</a></li>
@@ -19,59 +65,100 @@
             <li><a href="kontak.html">Kontak</a></li>
         </ul>
     </nav>
-   <div class="main-content">
-    <h2>Pusat Informasi & Bantuan</h2>
-    <p>Klik pada pertanyaan di bawah ini untuk mendapatkan bantuan cepat mengenai website ini.</p>
 
-    <div class="faq-container">
-        <div class="faq-item">
-            <button class="faq-question" onclick="toggleFAQ(this)">
-                <span>Bagaimana cara melihat karya saya?</span>
-                <i class="fas fa-chevron-down"></i>
-            </button>
-            <div class="faq-answer">
-                <p>Anda dapat mengklik menu <strong>Karya & Project</strong> pada navigasi di atas untuk melihat kumpulan proyek pemrograman yang telah saya buat.</p>
-            </div>
-        </div>
+    <div class="main-content">
+        
+        <div class="section-container">
+            <h2><i class="fab fa-youtube" style="color: #ff0000;"></i> Tutorial Belajar Web</h2>
+            <p>Tonton tutorial pilihan berikut untuk menambah wawasan Anda.</p>
+            
+           <div class="video-grid">
+    <div class="video-card">
+        <a href="https://www.youtube.com/watch?v=0oA1Z6UKM5M" target="_blank">
+            <img src="https://img.youtube.com/vi/0oA1Z6UKM5M/hqdefault.jpg" style="width:100%">
+            <div class="video-label">Klik untuk Tonton: Dasar HTML</div>
+        </a>
+    </div>
 
-        <div class="faq-item">
-            <button class="faq-question" onclick="toggleFAQ(this)">
-                <span>Mengapa video di halaman Media tidak berputar?</span>
-                <i class="fas fa-chevron-down"></i>
-            </button>
-            <div class="faq-answer">
-                <p>Pastikan koneksi internet Anda stabil atau file video berada di folder yang sama dengan file HTML. Gunakan browser modern seperti Chrome atau Edge untuk hasil terbaik.</p>
-            </div>
-        </div>
+    <div class="video-card">
+        <a href="https://www.youtube.com/watch?v=CleFk3BZB3g" target="_blank">
+            <img src="https://img.youtube.com/vi/CleFk3BZB3g/hqdefault.jpg" style="width:100%">
+            <div class="video-label">Klik untuk Tonton: Dasar CSS</div>
+        </a>
+    </div>
 
-        <div class="faq-item">
-            <button class="faq-question" onclick="toggleFAQ(this)">
-                <span>Siapa pengembang website ini?</span>
-                <i class="fas fa-chevron-down"></i>
-            </button>
-            <div class="faq-answer">
-                <p>Website ini dikembangkan oleh <strong>AQELA HAMNE APRIANI</strong> sebagai tugas UAS mata kuliah Pemrograman Web 1-2025.</p>
-            </div>
-        </div>
+    <div class="video-card">
+        <a href="https://www.youtube.com/watch?v=RUTV_5m4VeI" target="_blank">
+            <img src="https://img.youtube.com/vi/RUTV_5m4VeI/hqdefault.jpg" style="width:100%">
+            <div class="video-label">Klik untuk Tonton: Dasar JS</div>
+        </a>
     </div>
 </div>
+                </div>
+            </div>
+        </div>
 
-<script>
-    function toggleFAQ(element) {
-        // Menutup bantuan lain yang sedang terbuka
-        const allAnswers = document.querySelectorAll('.faq-answer');
-        allAnswers.forEach(answer => {
-            if (answer !== element.nextElementSibling) {
-                answer.style.display = "none";
-            }
-        });
+        <hr style="border: 0; height: 1px; background: #eee; margin: 40px 0;">
 
-        // Membuka atau menutup bantuan yang diklik
-        const answer = element.nextElementSibling;
-        if (answer.style.display === "block") {
-            answer.style.display = "none";
-        } else {
-            answer.style.display = "block";
+        <div class="section-container">
+            <h2><i class="fas fa-question-circle" style="color: #3498db;"></i> Pusat Informasi & Bantuan</h2>
+            <p>Klik pada pertanyaan di bawah ini untuk mendapatkan bantuan cepat.</p>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button type="button" class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Bagaimana agar video berjalan lancar?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-content">
+                            <i class="fas fa-info-circle"></i> <strong>Solusi:</strong> Periksa koneksi internet Anda,Kemudian klik kembali.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Bagaimana cara melihat karya saya?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-content">
+                            Anda dapat mengklik menu <strong>Karya & Project</strong> pada navigasi di atas.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Siapa pengembang website ini?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-content">
+                            Website ini dikembangkan oleh <strong>AQELA HAMNE APRIANI</strong> (UAS - 2025).
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div> 
+    </div>
+
+    <script>
+        function toggleFAQ(element) {
+            const icon = element.querySelector('i');
+            const answer = element.nextElementSibling;
+
+            document.querySelectorAll('.faq-answer').forEach(el => {
+                if (el !== answer) el.classList.remove('show');
+            });
+            document.querySelectorAll('.faq-question i').forEach(i => {
+                if (i !== icon) i.classList.remove('rotate');
+            });
+
+            answer.classList.toggle('show');
+            icon.classList.toggle('rotate');
         }
-    }
-</script>
+    </script>
+</body>
+</html>

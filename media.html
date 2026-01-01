@@ -1,15 +1,116 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+    <meta charset="UTF-8">
     <title>Media - Website Saya</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* 1. CSS UNTUK GRID 3 KE SAMPING */
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .media-grid img, .video-item {
+            width: 100%;
+            aspect-ratio: 1/1; 
+            object-fit: cover;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+            background: #000;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .media-grid img:hover, .video-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+
+        /* 2. CSS UNTUK TABS (Tombol Menu) */
+        .media-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .tab-link {
+            padding: 12px 24px;
+            border: none;
+            background: #eee;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .tab-link.active {
+            background: #3498db;
+            color: white;
+        }
+
+        /* 3. CSS MODAL (Tampilan Pop-up) */
+        .modal {
+            display: none; 
+            position: fixed;
+            z-index: 2000;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            max-width: 80%;
+            max-height: 80%;
+            border-radius: 10px;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px; right: 30px;
+            color: white; font-size: 40px;
+            cursor: pointer;
+        }
+
+        /* 4. CSS UNTUK AUDIO */
+        .audio-list {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .audio-item {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .video-item p {
+            position: absolute;
+            bottom: 5px; width: 100%;
+            text-align: center; color: white;
+            font-size: 12px; background: rgba(0,0,0,0.5);
+            margin: 0; border-radius: 0 0 12px 12px;
+        }
+    </style>
 </head>
 <body>
+
     <header>
-        <h1>Selamat Datang di Website Saya</h1>
+        <h1>Koleksi Media Saya</h1>
         <p>Halaman Media</p>
     </header>
+
     <nav>
         <ul>
             <li><a href="index.html">Home</a></li>
@@ -22,82 +123,84 @@
     </nav>
 
     <div class="main-content">
-        <h2>Koleksi Media</h2>
-        <p>Klik media di bawah ini untuk melihat atau memutarnya.</p>
-
         <div class="media-tabs">
             <button class="tab-link active" onclick="openMedia(event, 'foto')"><i class="fas fa-image"></i> Foto</button>
             <button class="tab-link" onclick="openMedia(event, 'video')"><i class="fas fa-video"></i> Video</button>
             <button class="tab-link" onclick="openMedia(event, 'audio')"><i class="fas fa-music"></i> Audio</button>
         </div>
 
-        <div id="foto" class="tab-content active">
+        <div id="foto" class="tab-content" style="display: block;">
             <div class="media-grid">
-                <img src= "1.png" Foto 1" onclick="openImage(this.src)">
-                <img src= "2.png" Foto 2" onclick="openImage(this.src)">
-                <img src="3.png" Foto 3" onclick="openImage(this.src)">
+                <img src="1.png" onclick="openImage(this.src)">
+                <img src="2.png" onclick="openImage(this.src)">
+                <img src="3.png" onclick="openImage(this.src)">
+                <img src="keluarga1.jpeg" onclick="openImage(this.src)">
+                <img src="aqelakesi.jpeg" onclick="openImage(this.src)">
+                <img src="aqelabu.jpeg" onclick="openImage(this.src)">
             </div>
         </div>
 
-        <div id="video" class="tab-content">
+        <div id="video" class="tab-content" style="display: none;">
             <div class="media-grid">
-                <div class="video-container">
-                    <video controls>
-                        <source src="Belajar1.Mp4.mp4" video/mp4">
-                        
-                    </video>
-                    <p>Belajar bagian 1</p>
+                <div class="video-item" onclick="openVideo('Belajar1.Mp4.mp4')">
+                    <video muted><source src="Belajar1.Mp4.mp4" type="video/mp4"></video>
+                    <i class="fas fa-play" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); color:white; font-size:30px;"></i>
+                    <p>Belajar 1</p>
                 </div>
-                <div class="video-container">
-                    <video controls>
-                        <source src= "videoplayback.mp4" video/mp4">
-                        
-                    </video>
-                    <p>Belajar bagian 2</p>
+                <div class="video-item" onclick="openVideo('videoplayback.mp4')">
+                    <video muted><source src="videoplayback.mp4" type="video/mp4"></video>
+                    <i class="fas fa-play" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); color:white; font-size:30px;"></i>
+                    <p>Belajar 2</p>
                 </div>
-                <div class="video-container">
-                    <video controls>
-                        <source src="Belajar3.mp4.mp4" video/mp4">
-                        
-                    </video>
-                    <p>Belajar bagian 3</p>
+                <div class="video-item" onclick="openVideo('Belajar3.mp4.mp4')">
+                    <video muted><source src="Belajar3.mp4.mp4" type="video/mp4"></video>
+                    <i class="fas fa-play" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); color:white; font-size:30px;"></i>
+                    <p>Belajar 3</p>
+                </div>
+                <div class="video-item" onclick="openVideo('jj1.mp4')">
+                    <video muted><source src="jj1.mp4" type="video/mp4"></video>
+                    <i class="fas fa-play" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); color:white; font-size:30px;"></i>
+                    <p>Family 1</p>
+                </div>
+                <div class="video-item" onclick="openVideo('jj2.mp4')">
+                    <video muted><source src="jj2.mp4" type="video/mp4"></video>
+                    <i class="fas fa-play" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); color:white; font-size:30px;"></i>
+                    <p>Family 2</p>
+                </div>
+                <div class="video-item" onclick="openVideo('latipultah.mp4')">
+                    <video muted><source src="latipultah.mp4" type="video/mp4"></video>
+                    <i class="fas fa-play" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); color:white; font-size:30px;"></i>
+                    <p>Ultah</p>
                 </div>
             </div>
         </div>
 
-        <div id="audio" class="tab-content">
+        <div id="audio" class="tab-content" style="display: none;">
             <div class="audio-list">
                 <div class="audio-item">
-                    <p><i class="fas fa-play-circle"></i> Belajar 1</p>
-                    <audio controls>
-                        <source src="1 Pengantar Pemrograman Web Dasar _ PEMROGRAMAN WEB DASAR.mp3" type="audio/ogg">
-                    </audio>
+                    <span><i class="fas fa-music"></i> Audio Belajar 1</span>
+                    <audio controls><source src="1 Pengantar Pemrograman Web Dasar _ PEMROGRAMAN WEB DASAR - Salin.mp3" type="audio/mpeg"></audio>
                 </div>
                 <div class="audio-item">
-                    <p><i class="fas fa-play-circle"></i> Belajar 2</p>
-                    <audio controls>
-                        <source src="2 Mengenal Web dan Teknologi nya _ PEMROGRAMAN WEB DASAR.mp3" type="audio/mpeg">
-                    </audio>
+                    <span><i class="fas fa-music"></i> Audio Belajar 2</span>
+                    <audio controls><source src="2 Mengenal Web dan Teknologi nya _ PEMROGRAMAN WEB DASAR - Salin.mp3" type="audio/mpeg"></audio>
                 </div>
                 <div class="audio-item">
-                    <p><i class="fas fa-play-circle"></i> Belajar 3</p>
-                    <audio controls>
-                        <source src="3 Persiapan Tools _ PEMROGRAMAN WEB DASAR.mp3"audio/mpeg">
-                    </audio>
+                    <span><i class="fas fa-music"></i> Audio Belajar 3</span>
+                    <audio controls><source src="3 Persiapan Tools _ PEMROGRAMAN WEB DASAR - Salin.mp3" type="audio/mpeg"></audio>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="imgModal" class="modal" onclick="this.style.display='none'">
-        <span class="close">&times;</span>
-        <img class="modal-content" id="imgFull">
+    <div id="mediaModal" class="modal" onclick="closeModal()">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div id="modalContainer" onclick="event.stopPropagation()">
+            </div>
     </div>
 
-    <footer>&copy; 2025 WEBSITE-AQELA HAMNE APRIANI</footer>
-
     <script>
-        // Fungsi Tab
+        // FUNGSI PINDAH TAB
         function openMedia(evt, mediaName) {
             var i, tabcontent, tablinks;
             tabcontent = document.getElementsByClassName("tab-content");
@@ -106,18 +209,35 @@
             }
             tablinks = document.getElementsByClassName("tab-link");
             for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
+                tablinks[i].classList.remove("active");
             }
             document.getElementById(mediaName).style.display = "block";
-            evt.currentTarget.className += " active";
+            evt.currentTarget.classList.add("active");
         }
 
-        // Fungsi Buka Foto Besar
+        // FUNGSI TAMPILKAN GAMBAR BESAR
         function openImage(src) {
-            document.getElementById("imgModal").style.display = "block";
-            document.getElementById("imgFull").src = src;
+            const modal = document.getElementById("mediaModal");
+            const container = document.getElementById("modalContainer");
+            container.innerHTML = `<img src="${src}" class="modal-content">`;
+            modal.style.display = "flex";
+        }
+
+        // FUNGSI TAMPILKAN VIDEO BESAR
+        function openVideo(src) {
+            const modal = document.getElementById("mediaModal");
+            const container = document.getElementById("modalContainer");
+            container.innerHTML = `<video src="${src}" controls autoplay class="modal-content"></video>`;
+            modal.style.display = "flex";
+        }
+
+        // FUNGSI TUTUP MODAL
+        function closeModal() {
+            const modal = document.getElementById("mediaModal");
+            const container = document.getElementById("modalContainer");
+            container.innerHTML = ""; 
+            modal.style.display = "none";
         }
     </script>
 </body>
 </html>
-
